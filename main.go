@@ -12,6 +12,7 @@ func main() {
 	var cmdMerge = &cobra.Command{
 		Use:   "merge-vlf [vlf_file1] [vlf_file2] [vlf_file3] ...",
 		Short: "merge-vlf vlf_file1, vlf_file2, vlf_file3, ...",
+		Long: "merge-vlf VLF_files for merging -- the files are assumed to be channels of an audio file.  Each file will be assigned a Speaker_# where # is the order that the file appeared in the arguments.  Specify -output for the resulting output file",
 		Args: func(cmd *cobra.Command, args []string) error {
 			if len(args) < 1 {
 				return errors.New("requires at least one file")

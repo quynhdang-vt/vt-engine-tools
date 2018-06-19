@@ -29,7 +29,7 @@ type VLFLattice map[string]VLFUtterance
 func ParseVLF(filename string) (VLFLattice, error) {
 	lattice := make(map[string]VLFUtterance)
 	fileContents, err := ioutil.ReadFile(filename)
-	err = json.Unmarshal(fileContents, lattice)
+	err = json.Unmarshal(fileContents, &lattice)
 	if err != nil {
 		return nil, err
 	}

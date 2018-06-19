@@ -47,7 +47,7 @@ func (this *TranscriptionEngineOutput) addVLFUtterance(speakerId string, vlfUtte
 	words := make([]UtteranceWord, nWords)
 	for i, v := range vlfUtterance.Words {
 		words[i].Word = v.Word
-		words[i].Confidence = float32(v.Confidence / 1000)
+		words[i].Confidence = float32(v.Confidence) / 1000.0
 		words[i].BestPath = v.BestPathForward
 		words[i].UtteranceLength = v.SpanningLength
 	}
