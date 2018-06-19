@@ -7,7 +7,7 @@ green()    { TSTAMP=$(date +"%Y-%m-%d %H:%M:%S"); echo -e "\033[1;32m$TSTAMP $@$
 yellow()   { TSTAMP=$(date +"%Y-%m-%d %H:%M:%S"); echo -e "\033[0;33m$TSTAMP $@${NC}";}
 darkGreen(){ TSTAMP=$(date +"%Y-%m-%d %H:%M:%S"); echo -e "\033[38;5;002m$TSTAMP $@${NC}";}
 
-AIWARE_GRAPHIQL_TOKEN=7682-human:422c17bf-eb94-4643-89c3-282ee21812de-178c4398-1809-4bfe-8d3c-0aa8b7045f8e
+#AIWARE_GRAPHIQL_TOKEN=
 GRAPHQL_SERVER=https://api.veritone.com
 ##
 ## Use this script to start a transcription job given ENGINE_ID
