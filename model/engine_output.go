@@ -21,7 +21,7 @@ type UtteranceWord struct {
 type Utterance struct {
 	StartTimeMs int             `json:"startTimeMs"`
 	StopTimeMs  int             `json:"stopTimeMs"`
-	SpeakerId   string          `json:"speakerId"`
+	Id   string          `json:"id, omitempty"`
 	Words       []UtteranceWord `json:"words"`
 }
 
@@ -39,7 +39,7 @@ func NewEngineOutput() TranscriptionEngineOutput {
 	}
 }
 
-func (this *TranscriptionEngineOutput) addVLFUtterance(speakerId string, vlfUtterance VLFUtterance) {
+func (this *TranscriptionEngineOutput) addVLFUtterance(id string, vlfUtterance VLFUtterance) {
 	nWords := len(vlfUtterance.Words)
 	if nWords == 0 {
 		return
@@ -52,7 +52,7 @@ func (this *TranscriptionEngineOutput) addVLFUtterance(speakerId string, vlfUtte
 		words[i].UtteranceLength = v.SpanningLength
 	}
 	utterance := Utterance{
-		SpeakerId:   speakerId,
+		Id:   id,
 		StartTimeMs: vlfUtterance.StartTimeMs,
 		StopTimeMs:  vlfUtterance.StopTimeMs,
 		Words:       words,
@@ -60,9 +60,9 @@ func (this *TranscriptionEngineOutput) addVLFUtterance(speakerId string, vlfUtte
 	this.Series = append(this.Series, utterance)
 }
 
-func (this *TranscriptionEngineOutput) AddVLF(speakerId string, lattice VLFLattice) {
+func (this *TranscriptionEngineOutput) AddVLF(id string, lattice VLFLattice) {
 	for _, v := range lattice {
-		this.addVLFUtterance(speakerId, v)
+		this.addVLFUtterance(id, v)
 	}
 }
 
